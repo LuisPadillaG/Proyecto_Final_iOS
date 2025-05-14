@@ -13,7 +13,7 @@ struct PokeAPI: Codable {
     //descargar_pagina_personajes
     //"inspirado en servicios_API/dragonball_api"
     func descargar_pagina_pokemon() async -> PaginaResultado?{
-        let ubicacion_recursos = "/pokemon/"
+        let ubicacion_recursos = "pokemon/"
         
         return await descargar(recurso: ubicacion_recursos)
     }

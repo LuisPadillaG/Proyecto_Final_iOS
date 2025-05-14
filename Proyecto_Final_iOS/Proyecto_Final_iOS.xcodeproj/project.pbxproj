@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB3466402DD4F24E00F43E71 /* FullDescargadoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34663F2DD4F24E00F43E71 /* FullDescargadoInfo.swift */; };
 		FB45BD862DD248DF00F64EE3 /* pantalla_pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB45BD852DD248DF00F64EE3 /* pantalla_pokemon.swift */; };
 		FB45BD892DD249ED00F64EE3 /* poke_api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB45BD882DD249ED00F64EE3 /* poke_api.swift */; };
 		FB45BD8E2DD24B9300F64EE3 /* pagina_resultados.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB45BD8D2DD24B9300F64EE3 /* pagina_resultados.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB34663F2DD4F24E00F43E71 /* FullDescargadoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullDescargadoInfo.swift; sourceTree = "<group>"; };
 		FB45BD852DD248DF00F64EE3 /* pantalla_pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pantalla_pokemon.swift; sourceTree = "<group>"; };
 		FB45BD882DD249ED00F64EE3 /* poke_api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = poke_api.swift; sourceTree = "<group>"; };
 		FB45BD8D2DD24B9300F64EE3 /* pagina_resultados.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pagina_resultados.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				FB45BD8F2DD24C2300F64EE3 /* pocket_monsters.swift */,
 				FB45BD932DD2510300F64EE3 /* evolution_Chain.swift */,
 				FB45BD912DD24EFD00F64EE3 /* Pokemon_species.swift */,
+				FB34663F2DD4F24E00F43E71 /* FullDescargadoInfo.swift */,
 			);
 			path = pokemon;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				FB45BD8E2DD24B9300F64EE3 /* pagina_resultados.swift in Sources */,
 				FB45BD922DD24EFD00F64EE3 /* Pokemon_species.swift in Sources */,
 				FB930ABB2DCE596E00F0D992 /* ContentView.swift in Sources */,
+				FB3466402DD4F24E00F43E71 /* FullDescargadoInfo.swift in Sources */,
 				FB45BD892DD249ED00F64EE3 /* poke_api.swift in Sources */,
 				FB45BD862DD248DF00F64EE3 /* pantalla_pokemon.swift in Sources */,
 				FB45BD902DD24C2300F64EE3 /* pocket_monsters.swift in Sources */,

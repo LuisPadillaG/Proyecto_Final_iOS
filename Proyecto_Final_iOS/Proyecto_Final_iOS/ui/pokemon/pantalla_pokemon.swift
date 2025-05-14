@@ -8,14 +8,38 @@
 import SwiftUI
 
 struct pantalla_pokemon: View {
-    
+    @Environment(ControladorAplicacion.self) var controlador
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        //if(controlador.pagina_resultados != nil){
-        //}
+        if(controlador.pagina_resultados != nil){
+            
+            NavigationStack {
+                            ZStack {
+                                // Fondo rojo
+                                Color.red
+                                    .ignoresSafeArea()
+
+                                // Imagen de fondo (encima del rojo)
+                                Image("pokeball_background_icon")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .opacity(0.2) // Opcional: le bajas opacidad si quieres un efecto sutil
+                                    .ignoresSafeArea()
+                                    .offset(y: -250)
+ 
+                                VStack {
+                                    //Rectangle()
+                                    Text("Medio paso llevamos")
+                                        .foregroundColor(.white)
+                                        //.font(.title)
+                                        .bold()
+                                }
+                            }
+                        }
+        }
     }
 }
 
 #Preview {
     pantalla_pokemon()
+        .environment(ControladorAplicacion())
 }
