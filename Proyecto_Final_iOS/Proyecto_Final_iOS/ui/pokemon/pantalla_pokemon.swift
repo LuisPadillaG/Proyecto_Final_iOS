@@ -7,8 +7,14 @@
 
 import SwiftUI
 
+
+
 struct pantalla_pokemon: View {
     @Environment(ControladorAplicacion.self) var controlador
+    var id: Int = 1
+    let myColorVerdeOscuro = Color(red: 0, green: 0.3, blue: 0, opacity: 0.8) // Color verde oscurito
+    let myColorVerdeClaro = Color(red: 0, green: 0.6, blue: 0) // Color verde oscurito
+    let myColorWithOpacity = Color(red: 0.8, green: 0.2, blue: 0.1, opacity: 0.7) // Color personalizado con transparencia
     var body: some View {
         if(controlador.pagina_resultados != nil){
             
@@ -27,12 +33,34 @@ struct pantalla_pokemon: View {
                                     .offset(y: -250)
  
                                 VStack {
-                                    //Rectangle()
-                                    Text("Medio paso llevamos")
-                                        .foregroundColor(.white)
-                                        //.font(.title)
-                                        .bold()
+                                    //Poner barra de navegacion aquio
+                                    ZStack{
+                                        Rectangle()
+                                            .background(myColorVerdeOscuro).foregroundColor(Color.gray.opacity(0))
+                                    }.frame(width: 350, height: 225)
+                                        .border(Color.white, width: 7)
+                                    
+                                    Spacer()
+                                    VStack{
+                                        ScrollView{
+                                            ForEach(controlador.pagina_resultados!.results){ pokemon in
+                                                HStack{
+                                                    Text(pokemon.name).foregroundColor(Color.white).font(.title2)
+                                                        .bold()
+                                                }.cornerRadius(50)
+                                                    .padding(.init(top: 5, leading: 5, bottom: 10, trailing: 0))
+                                                    .frame(width: 330)
+                                                    .background(myColorVerdeClaro)
+                                                    .cornerRadius(10).padding(10)
+                                                
+                                            }
+                                            
+                                                
+                                        }
+                                        
+                                    }.background(Color.white)
                                 }
+                                
                             }
                         }
         }

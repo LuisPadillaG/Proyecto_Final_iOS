@@ -5,6 +5,8 @@
 //  Created by alumno on 5/12/25.
 //
 
+import Foundation
+
 
 /*struct Meta: Codable{
     let totalItems: Int
