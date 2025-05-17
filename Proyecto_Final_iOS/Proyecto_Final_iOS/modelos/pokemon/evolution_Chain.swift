@@ -11,3 +11,11 @@ struct evolutionChain:Identifiable, Codable
     let name: String
     let description: String
 }
+struct EvolutionChainData: Codable {
+    let chain: EvolutionChain
+}
+
+struct EvolutionChain: Codable {
+    let species: NamedAPIResource
+    let evolves_to: [EvolutionChain]
+}

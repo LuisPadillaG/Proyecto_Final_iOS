@@ -10,11 +10,12 @@ import SwiftUI
 
 @Observable
 @MainActor
-public class ControladorAplicacion {
-    var pocket_monster_seleccionado: PocketMonsters? = nil
+public class ControladorAplicacion : ObservableObject {
     
     var pagina_resultados: PaginaResultado? = nil
-    var personaje: PocketMonsters? = nil
+    var personaje: PocketMonstersCompleto? = nil
+    
+    var pocket_monster_seleccionado: PocketMonstersCompleto? = nil
     
     init(){
         Task.detached(priority: .high){
@@ -29,8 +30,8 @@ public class ControladorAplicacion {
         self.pagina_resultados = pagina_descargada
     }
     
-    func descargar_info_pocket_monster_individual(id: Int) async{
-        guard let pocket_monster: PocketMonsters = try? await PokeAPI().descargar_informacion_pokemon_individual(id: id) else {return}
+    /*func descargar_info_pocket_monster_individual(id: Int) async{
+        guard let pocket_monster: PocketMonstersCompleto = try? await PokeAPI().descargar_informacion_pokemon_individual(id: id) else {return}
         
         self.personaje = pocket_monster
     }
@@ -38,6 +39,15 @@ public class ControladorAplicacion {
         Task.detached(operation: {
             await self.descargar_info_pocket_monster_individual(id: id)
         })
+    }*/
+    
+    func cargarPokemonCompleto(id: Int) async {
+        if let pokemon = await PokeAPI().descargar_pokemon_completo(id: id) {
+            
+            self.pocket_monster_seleccionado = pokemon
+        } else {
+            print("No se pudo cargar el Pokémon completo")
+        }
     }
     
     

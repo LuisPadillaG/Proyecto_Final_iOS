@@ -1,24 +1,20 @@
-//
-//  pocket_monsters.swift
-//  Proyecto_Final_iOS
-//
-//  Created by alumno on 5/12/25.
-//
+import Foundation
 
+struct PocketMonstersCompleto: Codable {
+    let name: String
+    let abilities: [AbilityEntry]
+    let sprites: Sprites
+}
 
-struct PocketMonsters: Identifiable, Codable{
-        //pocketMonster es como MonoChino.
-        let id: String
-        let name: String
-        let abilities: [String]
-        let sprite: String //sprites.front_default o sprites.other.dream_world
-         
-    
-        let description: String //este se encuentra en pokemon-species/
-        let evolutionChain: [String]//este se encuentra en evolution-chain/
-    
-        //let originPlanet: Planeta?
-    
-        //let transformations: Array<Transformacion>?
-    
+struct AbilityEntry: Codable {
+    let ability: NamedAPIResource
+}
+
+struct NamedAPIResource: Codable {
+    let name: String
+    let url: String
+}
+
+struct Sprites: Codable {
+    let front_default: String?
 }

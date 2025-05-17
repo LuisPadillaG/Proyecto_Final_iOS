@@ -17,15 +17,18 @@ struct PokeAPI: Codable {
         
         return await descargar(recurso: ubicacion_recursos)
     }
-    func descargar_informacion_pokemon_individual(id: Int) async -> PocketMonsters?{
-        let ubicacion_recurso = "/pokemon/\(id)"
+    /*func descargar_informacion_pokemon_individual(id: Int) async -> PocketMonstersCompleto?{
+        let ubicacion_recurso = "pokemon/\(id)"
         return await descargar(recurso: ubicacion_recurso)
-    }
+    }*/
     func descargar_informacion_evolutionChain(id: Int) async -> evolutionChain?{
-        let ubicacion_recurso = "/evolution-chain/\(id)"
+        let ubicacion_recurso = "evolution-chain/\(id)"  //No hace nada
         return await descargar(recurso: ubicacion_recurso)
     }
-    
+    func descargar_informacion_pokemonSpecies(id: Int) async -> evolutionChain?{
+        let ubicacion_recurso = "pokemon-species/\(id)" //No hace nada
+        return await descargar(recurso: ubicacion_recurso)
+    }  
     
     private func descargar<TipoGenerico: Codable>(recurso: String) async -> TipoGenerico?{
         do{
@@ -39,8 +42,11 @@ struct PokeAPI: Codable {
                 return respuesta_decodificada
             }
             catch let error as NSError{
-                print("El error en tu modelo ES \(error.debugDescription) ")
-                throw ErroresDeRed.fallaAlConvertirLaRespuesta
+                if let stringData = String(data: datos, encoding: .utf8) {
+                        print("Respuesta cruda:\n\(stringData)")
+                    }
+                    print("El error en tu modelo ES \(error.debugDescription) ")
+                    throw ErroresDeRed.fallaAlConvertirLaRespuesta
             }
             
             
@@ -66,5 +72,84 @@ struct PokeAPI: Codable {
         }
         return nil
     }
+    
+    /*func descargar_pokemon_completo(id: Int) async -> PocketMonstersCompleto? {
+            do {
+                guard var pokemon: PocketMonstersCompleto = await descargar(recurso: "pokemon/\(id)/") else {
+                    print("Error al descargar datos del Pokémon básico")
+                    return nil
+                }
+
+                guard let species: PokemonSpecies = await descargar(recurso: "pokemon-species/\(id)/") else {
+                    print("Error al descargar species")
+                    return nil
+                }
+
+                guard let dataChainURL = URL(string: species.evolution_chain.url) else {
+                    print("Error creando URL de la cadena evolutiva")
+                    return nil
+                }
+
+                let (dataChain, _) = try await URLSession.shared.data(from: dataChainURL)
+                let evolutionChain = try JSONDecoder().decode(EvolutionChainInfo.self, from: dataChain)
+
+                pokemon.description = species.flavor_text_entries.first(where: { $0.language.name == "es" })?.flavor_text.replacingOccurrences(of: "\n", with: " ") ?? "Sin descripción."
+                pokemon.evolutionChain = evolutionChain
+
+                return pokemon
+
+            } catch {
+                print("Error al descargar el Pokémon completo: \(error)")
+                return nil
+            }
+        }*/
+    func descargar_pokemon_completo(id: Int) async -> PocketMonstersCompleto? {
+        do {
+            // 1. Descargar datos básicos de Pokémon
+            guard var pokemon: PocketMonstersCompleto = await descargar(recurso: "pokemon/\(id)/") else {
+                print("Error al descargar datos del Pokémon básico")
+                return nil
+            }
+
+            // 2. Descargar species para obtener descripción y URL cadena evolutiva
+            guard let species: PokemonSpecies = await descargar(recurso: "pokemon-species/\(id)/") else {
+                print("Error al descargar species")
+                return nil
+            }
+
+            // 3. Obtener descripción en español (o texto por defecto)
+            let descripcion = species.flavor_text_entries.first(where: { $0.language.name == "es" })?.flavor_text
+                .replacingOccurrences(of: "\n", with: " ") ?? "Sin descripción."
+            
+            // Aquí agregamos la propiedad descripción a PocketMonstersCompleto (puedes usar extensión o modificar modelo)
+            // Ejemplo con extensión:
+            // pokemon.description = descripcion
+            // Pero si no está en el modelo, puedes hacer un struct con una propiedad extra, o guardarla aparte
+            // Por simplicidad aquí solo lo imprimimos
+            print("Descripción:", descripcion)
+
+            // 4. Descargar cadena evolutiva
+            guard let urlCadenaEvo = URL(string: species.evolution_chain.url) else {
+                print("Error creando URL de cadena evolutiva")
+                return nil
+            }
+
+            let (dataEvo, _) = try await URLSession.shared.data(from: urlCadenaEvo)
+            let evolutionChain = try JSONDecoder().decode(EvolutionChainData.self, from: dataEvo)
+
+            // Si quieres, puedes agregar la cadena evolutiva a Pokémon (igual que con descripción)
+            // pokemon.evolutionChain = evolutionChain
+
+            // Para que compile, puedes crear una struct que agrupe todo, o guardar por separado
+            // Aquí retornamos solo el pokemon básico para que compile
+            return pokemon
+
+        } catch {
+            print("Error al descargar el Pokémon completo: \(error)")
+            return nil
+        }
+    }
+
+    
 }
  

@@ -6,11 +6,16 @@
 //
 
 
-
-struct Pokemon_species:Identifiable, Codable
-{
-    let id: Int
-    let name: String
-    let description: String
+struct PokemonSpecies: Codable {
+    let flavor_text_entries: [FlavorTextEntry]
+    let evolution_chain: EvolutionChainResource
 }
 
+struct FlavorTextEntry: Codable {
+    let flavor_text: String
+    let language: NamedAPIResource
+}
+
+struct EvolutionChainResource: Codable {
+    let url: String
+}
