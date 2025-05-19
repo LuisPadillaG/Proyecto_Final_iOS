@@ -53,7 +53,6 @@ struct pantalla_pokemon: View {
             
             NavigationStack {
                             ZStack {
-                                // Fondo rojo
                                 Color.red
                                     .ignoresSafeArea()
 
