@@ -150,7 +150,7 @@ struct pantalla_pokemon: View {
                                                     .background(myColorVerdeClaro)
                                                     .cornerRadius(10).padding(10)
                                                 }
-                                                // Aquí el truco: reconocer el tap sin interferir con NavigationLink
+                                                
                                                 .simultaneousGesture(TapGesture().onEnded {
                                                     pokemonSeleccionado = pokemon
                                                     mostrarInfo = true

@@ -32,8 +32,27 @@ struct pantalla_detalle_pokemon: View {
                             .offset(x: -100, y: -170)
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
-                    
+                    HStack {
+                        Text("001").offset(x: -100)
+                        ForEach(pokemon.types, id: \.slot) { typeEntry in
+                            
+                            if(typeEntry.type.name.capitalized == "Grass"){
+                                Text(typeEntry.type.name.capitalized)
+                                    .padding(5)
+                                    .background(Color.green)
+                                    .cornerRadius(5)
+                            }
+                            if(typeEntry.type.name.capitalized == "Poison"){
+                                Text(typeEntry.type.name.capitalized)
+                                    .padding(5)
+                                    .background(Color.purple)
+                                    .cornerRadius(5)
+                            }
+                        }
+                    }.frame(maxWidth: .infinity) // El VStack ocupa todo el ancho de la pantalla
+                        .padding()
                     VStack{
+                        
                         if let urlString = pokemon.sprites.front_default,
                            let url = URL(string: urlString) {
                             AsyncImage(url: url) { image in
@@ -44,6 +63,30 @@ struct pantalla_detalle_pokemon: View {
                             .frame(width: 350, height: 350)
                             .padding()
                         }
+                        Text(pokemon.name.capitalized)
+                            .font(.largeTitle)
+                            .bold().offset(y: -30)
+                        /*
+                        if let evoluciones = pokemon.evoluciones {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("Cadena Evolutiva")
+                                    .font(.title2)
+                                    .bold()
+                                    .foregroundColor(myColorVerdeClaro)
+                                    .padding(.leading)
+
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(spacing: 16) {
+                                        ForEach(evoluciones, id: \.self) { nombre in
+                                            VistaEvolucion(nombre: nombre)
+                                        }
+                                    }
+                                    .padding(.horizontal)
+                                }
+                            }
+                        }*/
+
+
                         VStack{
                             Text("Datos")
                                 .foregroundColor(myColorVerdeClaro)
@@ -51,7 +94,7 @@ struct pantalla_detalle_pokemon: View {
                             Text("Abilities:").frame(maxWidth: .infinity, alignment: .leading)
                                 .font(.title3)
                                 .bold()
-                                .padding(.init(top: 0, leading: 20, bottom: 10, trailing: 0))
+                                .padding(.init(top: 0, leading: 20, bottom: 10, trailing: 0)).foregroundColor(myColorVerdeClaro)
                             HStack{
                                 ForEach(pokemon.abilities, id: \.ability.name) { habilidad in
                                     HStack{
@@ -59,11 +102,20 @@ struct pantalla_detalle_pokemon: View {
                                     }.frame(maxWidth: .infinity, alignment: .leading).padding(.init(top: 0, leading: 20, bottom: 10, trailing: 0))
                                 }
                             }
+                            Text("Descripción:").frame(maxWidth: .infinity, alignment: .leading)
+                                .font(.title3)
+                                .bold()
+                                .padding(.init(top: 0, leading: 20, bottom: 0, trailing: 0)).foregroundColor(myColorVerdeClaro)
+                            if let descripcion = pokemon.description {
+                                Text(descripcion)
+                                    .font(.body)
+                                    .foregroundColor(myColorVerdeClaro)
+                                    .padding(.init(top: 0, leading: 20, bottom: 20, trailing: 10))
+                            }
                         }.frame(width: 350).background(Color.white)
+                            .cornerRadius(10).offset(y: -40)
                         
-                        Text(pokemon.name.capitalized)
-                            .font(.largeTitle)
-                            .bold()
+                        
                         
                         //Text(pokemon.)
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -101,6 +153,9 @@ struct pantalla_detalle_pokemon: View {
         return nombres.isEmpty ? nil : nombres
     }
 }
+
+
+
 #Preview {
     let controladorDePrueba = ControladorAplicacion()
     return pantalla_detalle_pokemon(idPokemon: 1)

@@ -103,6 +103,17 @@ struct PokeAPI: Codable {
                 return nil
             }
         }*/
+    func extraerEvoluciones(chain: EvolutionChain) -> [String] {
+        var nombres: [String] = []
+
+        func recorrer(_ nodo: EvolutionChain) {
+            nombres.append(nodo.species.name)
+            nodo.evolves_to.forEach { recorrer($0) }
+        }
+
+        recorrer(chain)
+        return nombres
+    }
     func descargar_pokemon_completo(id: Int) async -> PocketMonstersCompleto? {
         do {
             // 1. Descargar datos básicos de Pokémon
@@ -120,25 +131,40 @@ struct PokeAPI: Codable {
             // 3. Obtener descripción en español (o texto por defecto)
             let descripcion = species.flavor_text_entries.first(where: { $0.language.name == "es" })?.flavor_text
                 .replacingOccurrences(of: "\n", with: " ") ?? "Sin descripción."
-            
+            pokemon.description = descripcion
             // Aquí agregamos la propiedad descripción a PocketMonstersCompleto (puedes usar extensión o modificar modelo)
             // Ejemplo con extensión:
             // pokemon.description = descripcion
             // Pero si no está en el modelo, puedes hacer un struct con una propiedad extra, o guardarla aparte
             // Por simplicidad aquí solo lo imprimimos
             print("Descripción:", descripcion)
+            print("Tipos:", pokemon.types.map { $0.type.name })
 
             // 4. Descargar cadena evolutiva
             guard let urlCadenaEvo = URL(string: species.evolution_chain.url) else {
-                print("Error creando URL de cadena evolutiva")
-                return nil
+                        print("Error creando URL de cadena evolutiva")
+                        return nil
             }
 
             let (dataEvo, _) = try await URLSession.shared.data(from: urlCadenaEvo)
             let evolutionChain = try JSONDecoder().decode(EvolutionChainData.self, from: dataEvo)
 
+            let nombresEvoluciones = extraerEvoluciones(chain: evolutionChain.chain)
+            pokemon.evoluciones = nombresEvoluciones
             // Si quieres, puedes agregar la cadena evolutiva a Pokémon (igual que con descripción)
             // pokemon.evolutionChain = evolutionChain
+            if let primeraEvolucion = evolutionChain.chain.evolves_to.first?.species.name {
+                // Aquí tienes el nombre de la primera evolución
+                print("Primera evolución: \(primeraEvolucion)")
+                
+                guard let datosEvolucion: PocketMonstersCompleto = await descargar(recurso: "pokemon/\(primeraEvolucion)/") else {
+                    print("No se pudo obtener el Pokémon de la evolución")
+                    return pokemon
+                }
+
+                // Ahora puedes descargar los datos de ese Pokémon por nombre
+            }
+            
 
             // Para que compile, puedes crear una struct que agrupe todo, o guardar por separado
             // Aquí retornamos solo el pokemon básico para que compile
