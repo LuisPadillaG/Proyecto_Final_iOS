@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB32A1612DDE36B900CD5361 /* NavigadorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB32A1602DDE36B900CD5361 /* NavigadorBar.swift */; };
 		FB3466402DD4F24E00F43E71 /* FullDescargadoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34663F2DD4F24E00F43E71 /* FullDescargadoInfo.swift */; };
 		FB45BD862DD248DF00F64EE3 /* pantalla_pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB45BD852DD248DF00F64EE3 /* pantalla_pokemon.swift */; };
 		FB45BD892DD249ED00F64EE3 /* poke_api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB45BD882DD249ED00F64EE3 /* poke_api.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB32A1602DDE36B900CD5361 /* NavigadorBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigadorBar.swift; sourceTree = "<group>"; };
 		FB34663F2DD4F24E00F43E71 /* FullDescargadoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullDescargadoInfo.swift; sourceTree = "<group>"; };
 		FB45BD852DD248DF00F64EE3 /* pantalla_pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pantalla_pokemon.swift; sourceTree = "<group>"; };
 		FB45BD882DD249ED00F64EE3 /* poke_api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = poke_api.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				FBE2A35C2DD805E100C76CFE /* CustomSearchBar.swift */,
+				FB32A1602DDE36B900CD5361 /* NavigadorBar.swift */,
 			);
 			path = elementos;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				FB45BD862DD248DF00F64EE3 /* pantalla_pokemon.swift in Sources */,
 				FB45BD902DD24C2300F64EE3 /* pocket_monsters.swift in Sources */,
 				FB930AB92DCE596E00F0D992 /* Proyecto_Final_iOSApp.swift in Sources */,
+				FB32A1612DDE36B900CD5361 /* NavigadorBar.swift in Sources */,
 				FB45BD942DD2510300F64EE3 /* evolution_Chain.swift in Sources */,
 				FBE2A35F2DD80CB800C76CFE /* pokemon_detallado.swift in Sources */,
 			);

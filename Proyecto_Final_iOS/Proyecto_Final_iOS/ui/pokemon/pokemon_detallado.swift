@@ -12,6 +12,8 @@ struct pantalla_detalle_pokemon: View {
     @State private var pokemonCompleto: PocketMonstersCompleto?
     let myColordeFondo = Color(red: 0.9, green: 0.9, blue: 0.9, opacity: 1)
     let myColorVerdeClaro = Color(red: 0.01, green: 0.8, blue: 0.2) // Color verde oscurito
+    let myColorTipoBicho = Color(red: 0.04, green: 0.4, blue: 0.05)
+    @State var myColorPokemon: Color = .white
     @Environment(ControladorAplicacion.self) var controlador
     var body: some View {
         ScrollView {
@@ -33,7 +35,11 @@ struct pantalla_detalle_pokemon: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     HStack {
-                        Text("001").offset(x: -100)
+                        Spacer()
+                        Spacer()
+                        Text("0\(idPokemon)").offset(x: -80).foregroundColor(Color.green).bold().font(.title)
+
+                        Spacer()
                         ForEach(pokemon.types, id: \.slot) { typeEntry in
                             
                             if(typeEntry.type.name.capitalized == "Grass"){
@@ -41,14 +47,84 @@ struct pantalla_detalle_pokemon: View {
                                     .padding(5)
                                     .background(Color.green)
                                     .cornerRadius(5)
+                                    .foregroundColor(Color.white)
+                                    .bold()
+                                /*if(typeEntry.slot == 1){
+                                    myColorPokemon = .green
+                                }*/
+                                
                             }
                             if(typeEntry.type.name.capitalized == "Poison"){
                                 Text(typeEntry.type.name.capitalized)
                                     .padding(5)
                                     .background(Color.purple)
                                     .cornerRadius(5)
+                                    .foregroundColor(Color.white)
+                                    .bold()
+
+                            }
+                            if(typeEntry.type.name.capitalized == "Fire"){
+                                Text(typeEntry.type.name.capitalized)
+                                    .padding(5)
+                                    .background(Color.red)
+                                    .cornerRadius(5)
+                                    .foregroundColor(Color.white)
+                                    .bold()
+
+                            }
+                            if(typeEntry.type.name.capitalized == "Water"){
+                                Text(typeEntry.type.name.capitalized)
+                                    .padding(5)
+                                    .background(Color.blue)
+                                    .cornerRadius(5)
+                                    .foregroundColor(Color.white)
+                                    .bold()
+                            }
+                            if(typeEntry.type.name.capitalized == "Flying"){
+                                Text(typeEntry.type.name.capitalized)
+                                    .padding(5)
+                                    .background(Color.cyan)
+                                    .cornerRadius(5)
+                                    .foregroundColor(Color.white)
+                                    .bold()
+                            }
+                            if(typeEntry.type.name.capitalized == "Normal"){
+                                Text(typeEntry.type.name.capitalized)
+                                    .padding(5)
+                                    .background(Color.gray)
+                                    .cornerRadius(5)
+                                    .foregroundColor(Color.white)
+                                    .bold()
+                            }
+                            if(typeEntry.type.name.capitalized == "Bug"){
+                                Text(typeEntry.type.name.capitalized)
+                                    .padding(5)
+                                    .background(myColorTipoBicho)
+                                    .cornerRadius(5)
+                                    .foregroundColor(Color.white)
+                                    .bold()
+                            }
+                        }.onAppear {
+                            // Se ejecuta una vez cuando la vista aparece.
+                            if let firstTypeEntry = pokemon.types.first {
+                                if firstTypeEntry.type.name.capitalized == "Grass" {
+                                    myColorPokemon = .green
+                                }
+                                else if firstTypeEntry.type.name.capitalized == "Fire" {
+                                    myColorPokemon = .red
+                                }
+                                else if firstTypeEntry.type.name.capitalized == "Water" {
+                                    myColorPokemon = .blue
+                                }
+                                else if firstTypeEntry.type.name.capitalized == "Bug" {
+                                    myColorPokemon = myColorTipoBicho
+                                }
+                                else if firstTypeEntry.type.name.capitalized == "Normal" {
+                                    myColorPokemon = .gray
+                                }
                             }
                         }
+                        Spacer()
                     }.frame(maxWidth: .infinity) // El VStack ocupa todo el ancho de la pantalla
                         .padding()
                     VStack{
@@ -64,8 +140,8 @@ struct pantalla_detalle_pokemon: View {
                             .padding()
                         }
                         Text(pokemon.name.capitalized)
-                            .font(.largeTitle)
-                            .bold().offset(y: -30)
+                            .font(.largeTitle).foregroundColor(myColorPokemon)
+                            .bold().offset(x: -80, y:-20)
                         /*
                         if let evoluciones = pokemon.evoluciones {
                             VStack(alignment: .leading, spacing: 10) {
@@ -113,7 +189,7 @@ struct pantalla_detalle_pokemon: View {
                                     .padding(.init(top: 0, leading: 20, bottom: 20, trailing: 10))
                             }
                         }.frame(width: 350).background(Color.white)
-                            .cornerRadius(10).offset(y: -40)
+                            .cornerRadius(10).offset(y: 0)
                         
                         
                         

@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
+            pantalla_pokemon()
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
@@ -21,4 +22,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(ControladorAplicacion())
 }
