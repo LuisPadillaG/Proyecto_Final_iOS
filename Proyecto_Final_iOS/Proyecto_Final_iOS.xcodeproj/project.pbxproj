@@ -21,6 +21,10 @@
 		FB930ABB2DCE596E00F0D992 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB930ABA2DCE596E00F0D992 /* ContentView.swift */; };
 		FB930ABD2DCE596F00F0D992 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB930ABC2DCE596F00F0D992 /* Assets.xcassets */; };
 		FB930AC02DCE596F00F0D992 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB930ABF2DCE596F00F0D992 /* Preview Assets.xcassets */; };
+		FBE1845C2DDFD0100032B886 /* pagina_resultados_objetos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE1845B2DDFD0100032B886 /* pagina_resultados_objetos.swift */; };
+		FBE1845F2DDFD10F0032B886 /* FullDescargadoInfoObjetos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE1845E2DDFD10F0032B886 /* FullDescargadoInfoObjetos.swift */; };
+		FBE184612DDFD4B30032B886 /* Objeto_Individual.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE184602DDFD4B30032B886 /* Objeto_Individual.swift */; };
+		FBE184642DDFDA740032B886 /* pantalla_objeto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE184632DDFDA740032B886 /* pantalla_objeto.swift */; };
 		FBE2A35D2DD805E100C76CFE /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2A35C2DD805E100C76CFE /* CustomSearchBar.swift */; };
 		FBE2A35F2DD80CB800C76CFE /* pokemon_detallado.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2A35E2DD80CB800C76CFE /* pokemon_detallado.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +45,10 @@
 		FB930ABA2DCE596E00F0D992 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FB930ABC2DCE596F00F0D992 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB930ABF2DCE596F00F0D992 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FBE1845B2DDFD0100032B886 /* pagina_resultados_objetos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pagina_resultados_objetos.swift; sourceTree = "<group>"; };
+		FBE1845E2DDFD10F0032B886 /* FullDescargadoInfoObjetos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullDescargadoInfoObjetos.swift; sourceTree = "<group>"; };
+		FBE184602DDFD4B30032B886 /* Objeto_Individual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objeto_Individual.swift; sourceTree = "<group>"; };
+		FBE184632DDFDA740032B886 /* pantalla_objeto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pantalla_objeto.swift; sourceTree = "<group>"; };
 		FBE2A35C2DD805E100C76CFE /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		FBE2A35E2DD80CB800C76CFE /* pokemon_detallado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokemon_detallado.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +67,7 @@
 		FB45BD832DD248AA00F64EE3 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				FBE184622DDFDA2D0032B886 /* objects */,
 				FBE2A35B2DD805C100C76CFE /* elementos */,
 				FB45BD842DD248B700F64EE3 /* pokemon */,
 			);
@@ -162,8 +171,27 @@
 		FBE184592DDFB32F0032B886 /* objetos */ = {
 			isa = PBXGroup;
 			children = (
+				FBE1845A2DDFCB730032B886 /* soporte */,
+				FBE1845E2DDFD10F0032B886 /* FullDescargadoInfoObjetos.swift */,
+				FBE184602DDFD4B30032B886 /* Objeto_Individual.swift */,
 			);
 			path = objetos;
+			sourceTree = "<group>";
+		};
+		FBE1845A2DDFCB730032B886 /* soporte */ = {
+			isa = PBXGroup;
+			children = (
+				FBE1845B2DDFD0100032B886 /* pagina_resultados_objetos.swift */,
+			);
+			path = soporte;
+			sourceTree = "<group>";
+		};
+		FBE184622DDFDA2D0032B886 /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				FBE184632DDFDA740032B886 /* pantalla_objeto.swift */,
+			);
+			path = objects;
 			sourceTree = "<group>";
 		};
 		FBE2A35B2DD805C100C76CFE /* elementos */ = {
@@ -250,12 +278,16 @@
 				FBE2A35D2DD805E100C76CFE /* CustomSearchBar.swift in Sources */,
 				FB45BD8E2DD24B9300F64EE3 /* pagina_resultados.swift in Sources */,
 				FB45BD922DD24EFD00F64EE3 /* Pokemon_species.swift in Sources */,
+				FBE1845C2DDFD0100032B886 /* pagina_resultados_objetos.swift in Sources */,
 				FB930ABB2DCE596E00F0D992 /* ContentView.swift in Sources */,
 				FB3466402DD4F24E00F43E71 /* FullDescargadoInfo.swift in Sources */,
 				FB45BD892DD249ED00F64EE3 /* poke_api.swift in Sources */,
 				FB45BD862DD248DF00F64EE3 /* pantalla_pokemon.swift in Sources */,
 				FB45BD902DD24C2300F64EE3 /* pocket_monsters.swift in Sources */,
 				FB930AB92DCE596E00F0D992 /* Proyecto_Final_iOSApp.swift in Sources */,
+				FBE184612DDFD4B30032B886 /* Objeto_Individual.swift in Sources */,
+				FBE184642DDFDA740032B886 /* pantalla_objeto.swift in Sources */,
+				FBE1845F2DDFD10F0032B886 /* FullDescargadoInfoObjetos.swift in Sources */,
 				FB32A1612DDE36B900CD5361 /* NavigadorBar.swift in Sources */,
 				FB45BD942DD2510300F64EE3 /* evolution_Chain.swift in Sources */,
 				FBE2A35F2DD80CB800C76CFE /* pokemon_detallado.swift in Sources */,

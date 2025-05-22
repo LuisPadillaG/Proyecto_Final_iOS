@@ -9,7 +9,10 @@ import SwiftUI
 
 struct PokeAPI: Codable {
     var url_base = "https://pokeapi.co/api/v2/"
-    
+    func descargar_objetos() async -> PaginaResultadoObjetos?{
+        let ubicacion_recursos = "item/"
+        return await descargar(recurso: ubicacion_recursos)
+    }
     //descargar_pagina_personajes
     //"inspirado en servicios_API/dragonball_api"
     func descargar_pagina_pokemon() async -> PaginaResultado?{
@@ -17,6 +20,7 @@ struct PokeAPI: Codable {
         
         return await descargar(recurso: ubicacion_recursos)
     }
+    
     /*func descargar_informacion_pokemon_individual(id: Int) async -> PocketMonstersCompleto?{
         let ubicacion_recurso = "pokemon/\(id)"
         return await descargar(recurso: ubicacion_recurso)
