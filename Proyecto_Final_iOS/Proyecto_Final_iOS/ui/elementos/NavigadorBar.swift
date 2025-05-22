@@ -8,24 +8,41 @@
 import SwiftUI
 
 struct BarraNavegacion: View {
+    init() {
+            //Cambia el fondo
+            UITabBar.appearance().backgroundColor = UIColor.systemGray6
+        }
     var body: some View {
-        TabView{
+        TabView {
             pantalla_pokemon()
                 .tabItem {
-                    Label{
-                        VStack{
-                            Image("pokeball_background_icon")
-                            //añadir estilo
-                            Text("Pokedex")
-                                //.//font(.custom("BungeeTint-Regular", size: 34))
-                        }
-                    } icon: {
-                        Circle()
-                            .frame(width: 44, height: 44, alignment: .center)
-                            .overlay(Text("Holaaa"))
+                    VStack(spacing: 2) {
+                        Image(systemName: "circle.bottomhalf.filled.inverse")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40, height: 40)
+                        Text("Pokedex")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                    }
+                }
+
+            pantalla_pokemon()
+                .tabItem {
+                    VStack(spacing: 2) {
+                        Image(systemName: "book.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30)
+                        Text("Objetos")
+                            .font(.caption)
+                            .fontWeight(.bold)
                     }
                 }
         }
+        .tint(.red)
+
+
     }
 }
 

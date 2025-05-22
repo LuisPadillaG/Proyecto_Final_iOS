@@ -73,36 +73,6 @@ struct PokeAPI: Codable {
         return nil
     }
     
-    /*func descargar_pokemon_completo(id: Int) async -> PocketMonstersCompleto? {
-            do {
-                guard var pokemon: PocketMonstersCompleto = await descargar(recurso: "pokemon/\(id)/") else {
-                    print("Error al descargar datos del Pokémon básico")
-                    return nil
-                }
-
-                guard let species: PokemonSpecies = await descargar(recurso: "pokemon-species/\(id)/") else {
-                    print("Error al descargar species")
-                    return nil
-                }
-
-                guard let dataChainURL = URL(string: species.evolution_chain.url) else {
-                    print("Error creando URL de la cadena evolutiva")
-                    return nil
-                }
-
-                let (dataChain, _) = try await URLSession.shared.data(from: dataChainURL)
-                let evolutionChain = try JSONDecoder().decode(EvolutionChainInfo.self, from: dataChain)
-
-                pokemon.description = species.flavor_text_entries.first(where: { $0.language.name == "es" })?.flavor_text.replacingOccurrences(of: "\n", with: " ") ?? "Sin descripción."
-                pokemon.evolutionChain = evolutionChain
-
-                return pokemon
-
-            } catch {
-                print("Error al descargar el Pokémon completo: \(error)")
-                return nil
-            }
-        }*/
     func extraerEvoluciones(chain: EvolutionChain) -> [String] {
         var nombres: [String] = []
 
@@ -116,27 +86,26 @@ struct PokeAPI: Codable {
     }
     func descargar_pokemon_completo(id: Int) async -> PocketMonstersCompleto? {
         do {
-            // 1. Descargar datos básicos de Pokémon
+            //1. Descargar datos básicos de Pokémon
             guard var pokemon: PocketMonstersCompleto = await descargar(recurso: "pokemon/\(id)/") else {
                 print("Error al descargar datos del Pokémon básico")
                 return nil
             }
 
-            // 2. Descargar species para obtener descripción y URL cadena evolutiva
+            //2. Descargar species para obtener descripción y URL cadena evolutiva
             guard let species: PokemonSpecies = await descargar(recurso: "pokemon-species/\(id)/") else {
                 print("Error al descargar species")
                 return nil
             }
 
-            // 3. Obtener descripción en español (o texto por defecto)
+            //3. Obtener descripción en español (o texto por defecto)
             let descripcion = species.flavor_text_entries.first(where: { $0.language.name == "es" })?.flavor_text
                 .replacingOccurrences(of: "\n", with: " ") ?? "Sin descripción."
             pokemon.description = descripcion
-            // Aquí agregamos la propiedad descripción a PocketMonstersCompleto (puedes usar extensión o modificar modelo)
-            // Ejemplo con extensión:
-            // pokemon.description = descripcion
-            // Pero si no está en el modelo, puedes hacer un struct con una propiedad extra, o guardarla aparte
-            // Por simplicidad aquí solo lo imprimimos
+            //Aquí agregamos la propiedad descripción a PocketMonstersCompleto (puedes usar extensión o modificar modelo)
+            //pokemon.description = descripcion
+            //Pero si no está en el modelo, puedes hacer un struct con una propiedad extra, o guardarla aparte
+            //Por simplicidad aquí nada más lo imprimimos
             print("Descripción:", descripcion)
             print("Tipos:", pokemon.types.map { $0.type.name })
 
@@ -162,11 +131,11 @@ struct PokeAPI: Codable {
                     return pokemon
                 }
 
-                // Ahora puedes descargar los datos de ese Pokémon por nombre
+                //Se descarga la información de pokémon con el nombre
             }
             
 
-            // Para que compile, puedes crear una struct que agrupe todo, o guardar por separado
+            
             // Aquí retornamos solo el pokemon básico para que compile
             return pokemon
 

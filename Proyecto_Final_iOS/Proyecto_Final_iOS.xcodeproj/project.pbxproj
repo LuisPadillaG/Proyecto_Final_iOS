@@ -86,12 +86,13 @@
 		FB45BD8A2DD24B4E00F64EE3 /* modelos */ = {
 			isa = PBXGroup;
 			children = (
-				FB45BD8B2DD24B5F00F64EE3 /* pokemon */,
+				FBE184592DDFB32F0032B886 /* objetos */,
+				FB45BD8B2DD24B5F00F64EE3 /* pokemon_pokedex */,
 			);
 			path = modelos;
 			sourceTree = "<group>";
 		};
-		FB45BD8B2DD24B5F00F64EE3 /* pokemon */ = {
+		FB45BD8B2DD24B5F00F64EE3 /* pokemon_pokedex */ = {
 			isa = PBXGroup;
 			children = (
 				FB45BD8C2DD24B7D00F64EE3 /* soporte */,
@@ -100,7 +101,7 @@
 				FB45BD912DD24EFD00F64EE3 /* Pokemon_species.swift */,
 				FB34663F2DD4F24E00F43E71 /* FullDescargadoInfo.swift */,
 			);
-			path = pokemon;
+			path = pokemon_pokedex;
 			sourceTree = "<group>";
 		};
 		FB45BD8C2DD24B7D00F64EE3 /* soporte */ = {
@@ -156,6 +157,13 @@
 				FB930ABF2DCE596F00F0D992 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FBE184592DDFB32F0032B886 /* objetos */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = objetos;
 			sourceTree = "<group>";
 		};
 		FBE2A35B2DD805C100C76CFE /* elementos */ = {
