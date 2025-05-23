@@ -27,7 +27,7 @@ struct BarraNavegacion: View {
                     }
                 }
 
-            pantalla_pokemon()
+            pantalla_objeto()
                 .tabItem {
                     VStack(spacing: 2) {
                         Image(systemName: "book.circle")
@@ -40,7 +40,7 @@ struct BarraNavegacion: View {
                     }
                 }
         }
-        .tint(.red)
+        .tint(.green)
 
 
     }

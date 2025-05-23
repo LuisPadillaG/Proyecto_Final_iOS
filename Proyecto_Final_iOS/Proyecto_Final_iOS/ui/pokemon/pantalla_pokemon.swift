@@ -14,8 +14,9 @@ struct pantalla_pokemon: View {
     var ide: Int = 1
     let myColorVerdeOscuro = Color(red: 0, green: 0.3, blue: 0, opacity: 0.8) // Color verde oscurito
     let myColorVerdeClaro = Color(red: 0, green: 0.6, blue: 0) // Color verde oscurito
-    let myColorGris = Color(red: 0.9, green: 1, blue: 0.95) // Color personalizado con transparencia
+    let myColorGris = Color(red: 0.9, green: 1, blue: 0.95)
     @State private var searchText = ""
+    let myColorPantalla = Color(red: 0.33, green: 0.44, blue: 0.25)
 
     @MainActor private func filteredPokemon() -> [FullDescargadoInfo] {
             if searchText.isEmpty {
@@ -66,7 +67,7 @@ struct pantalla_pokemon: View {
  
                                 VStack {
                                     HStack{
-                                        Text("Presionar pantalla para mas informacion").foregroundColor(Color.white).font(.headline)
+                                        Text("P O K E D E X").foregroundColor(Color.white).font(.title2)
                                             .bold()
                                     }.offset(y: 15)
                                     
@@ -91,35 +92,20 @@ struct pantalla_pokemon: View {
                                                     pokemonSeleccionado = nil
                                                 }
                                             }
-
-                                        if mostrarInfo, let _ = pokemonSeleccionado {
-                                            VStack(spacing: 10) {
-                                                if let urlString = pokemonSpriteURL,
-                                                   let url = URL(string: urlString) {
-                                                    AsyncImage(url: url) { image in
-                                                        image
-                                                            .resizable()
-                                                            .scaledToFit()
-                                                    } placeholder: {
-                                                        ProgressView()
-                                                    }
-                                                    .frame(width: 120, height: 120)
-                                                } else {
-                                                    ProgressView()
-                                                        .frame(width: 120, height: 120)
-                                                }
-
-                                                if let nombre = pokemonNombre {
-                                                    Text(nombre)
-                                                        .font(.title2)
-                                                        .bold()
-                                                        .foregroundColor(.white)
-                                                }
-                                            }
-                                            .offset(y: 30)
-                                            .frame(width: 350, height: 225)
-                                        } else {
-                                        }
+                                        HStack(alignment: .center, content: {
+                                            Spacer()
+                                            Spacer()
+                                            Image("oak_sprite")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 375, height: 200)
+                                                .opacity(0.7)
+                                                .offset(x: 50, y: 30)
+                                            Text("Tap a Pokémon to reveal its information, or learn more about trainers' favorite items")
+                                                .foregroundColor(myColorPantalla).font(.headline).offset(x: -150, y: 30).padding(60)
+                                            Spacer()
+                                        })
+                                        
                                     }
 
                                     

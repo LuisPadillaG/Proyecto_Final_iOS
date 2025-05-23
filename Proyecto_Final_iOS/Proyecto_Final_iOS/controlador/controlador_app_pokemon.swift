@@ -29,17 +29,7 @@ public class ControladorAplicacion : ObservableObject {
         print(pagina_descargada)
         self.pagina_resultados = pagina_descargada
     }
-    
-    /*func descargar_info_pocket_monster_individual(id: Int) async{
-        guard let pocket_monster: PocketMonstersCompleto = try? await PokeAPI().descargar_informacion_pokemon_individual(id: id) else {return}
-        
-        self.personaje = pocket_monster
-    }
-    func descargar_informacion_personaje(id: Int){
-        Task.detached(operation: {
-            await self.descargar_info_pocket_monster_individual(id: id)
-        })
-    }*/
+     
     
     func cargarPokemonCompleto(id: Int) async {
         if let pokemon = await PokeAPI().descargar_pokemon_completo(id: id) {

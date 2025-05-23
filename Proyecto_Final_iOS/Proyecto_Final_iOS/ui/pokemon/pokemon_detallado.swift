@@ -16,197 +16,198 @@ struct pantalla_detalle_pokemon: View {
     @State var myColorPokemon: Color = .white
     @Environment(ControladorAplicacion.self) var controlador
     var body: some View {
-        ScrollView {
-            if let pokemon = pokemonCompleto {
-                VStack(alignment: .leading, spacing: 20) {
-                    ZStack {
-                        Ellipse()
-                            .fill(Color.red)
-                            .frame(width: 525, height: 300)
-                            .offset(y: -170)
+        ZStack {
+            myColordeFondo
+            Ellipse()
+                .fill(Color.red)
+                .frame(width: 525, height: 300)
+                .offset(y: -400)
 
-                        Image("pokeball_background_icon")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200, height: 200)
-                            .rotationEffect(Angle(degrees: -10))
-                            .opacity(0.1)
-                            .offset(x: -100, y: -170)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    HStack {
-                        Spacer()
-                        Spacer()
-                        Text("0\(idPokemon)").offset(x: -80).foregroundColor(Color.green).bold().font(.title)
+            Image("pokeball_background_icon")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200, height: 200)
+                .rotationEffect(Angle(degrees: -10))
+                .opacity(0.1)
+                .offset(x: -100, y: -400)
+            
+            ScrollView {
+                if let pokemon = pokemonCompleto {
+                    VStack(alignment: .leading, spacing: 20) {
+                        
+                        HStack {
+                            Spacer()
+                            Spacer()
+                            Text("0\(idPokemon)").offset(x: -80).foregroundColor(Color.green).bold().font(.title)
 
-                        Spacer()
-                        ForEach(pokemon.types, id: \.slot) { typeEntry in
-                            
-                            if(typeEntry.type.name.capitalized == "Grass"){
-                                Text(typeEntry.type.name.capitalized)
-                                    .padding(5)
-                                    .background(Color.green)
-                                    .cornerRadius(5)
-                                    .foregroundColor(Color.white)
-                                    .bold()
-                                /*if(typeEntry.slot == 1){
-                                    myColorPokemon = .green
-                                }*/
+                            Spacer()
+                            ForEach(pokemon.types, id: \.slot) { typeEntry in
                                 
-                            }
-                            if(typeEntry.type.name.capitalized == "Poison"){
-                                Text(typeEntry.type.name.capitalized)
-                                    .padding(5)
-                                    .background(Color.purple)
-                                    .cornerRadius(5)
-                                    .foregroundColor(Color.white)
-                                    .bold()
+                                if(typeEntry.type.name.capitalized == "Grass"){
+                                    Text(typeEntry.type.name.capitalized)
+                                        .padding(5)
+                                        .background(Color.green)
+                                        .cornerRadius(5)
+                                        .foregroundColor(Color.white)
+                                        .bold()
+                                    
+                                }
+                                if(typeEntry.type.name.capitalized == "Poison"){
+                                    Text(typeEntry.type.name.capitalized)
+                                        .padding(5)
+                                        .background(Color.purple)
+                                        .cornerRadius(5)
+                                        .foregroundColor(Color.white)
+                                        .bold()
 
-                            }
-                            if(typeEntry.type.name.capitalized == "Fire"){
-                                Text(typeEntry.type.name.capitalized)
-                                    .padding(5)
-                                    .background(Color.red)
-                                    .cornerRadius(5)
-                                    .foregroundColor(Color.white)
-                                    .bold()
+                                }
+                                if(typeEntry.type.name.capitalized == "Fire"){
+                                    Text(typeEntry.type.name.capitalized)
+                                        .padding(5)
+                                        .background(Color.red)
+                                        .cornerRadius(5)
+                                        .foregroundColor(Color.white)
+                                        .bold()
 
-                            }
-                            if(typeEntry.type.name.capitalized == "Water"){
-                                Text(typeEntry.type.name.capitalized)
-                                    .padding(5)
-                                    .background(Color.blue)
-                                    .cornerRadius(5)
-                                    .foregroundColor(Color.white)
-                                    .bold()
-                            }
-                            if(typeEntry.type.name.capitalized == "Flying"){
-                                Text(typeEntry.type.name.capitalized)
-                                    .padding(5)
-                                    .background(Color.cyan)
-                                    .cornerRadius(5)
-                                    .foregroundColor(Color.white)
-                                    .bold()
-                            }
-                            if(typeEntry.type.name.capitalized == "Normal"){
-                                Text(typeEntry.type.name.capitalized)
-                                    .padding(5)
-                                    .background(Color.gray)
-                                    .cornerRadius(5)
-                                    .foregroundColor(Color.white)
-                                    .bold()
-                            }
-                            if(typeEntry.type.name.capitalized == "Bug"){
-                                Text(typeEntry.type.name.capitalized)
-                                    .padding(5)
-                                    .background(myColorTipoBicho)
-                                    .cornerRadius(5)
-                                    .foregroundColor(Color.white)
-                                    .bold()
-                            }
-                        }.onAppear {
-                            // Se ejecuta una vez cuando la vista aparece.
-                            if let firstTypeEntry = pokemon.types.first {
-                                if firstTypeEntry.type.name.capitalized == "Grass" {
-                                    myColorPokemon = .green
                                 }
-                                else if firstTypeEntry.type.name.capitalized == "Fire" {
-                                    myColorPokemon = .red
+                                if(typeEntry.type.name.capitalized == "Water"){
+                                    Text(typeEntry.type.name.capitalized)
+                                        .padding(5)
+                                        .background(Color.blue)
+                                        .cornerRadius(5)
+                                        .foregroundColor(Color.white)
+                                        .bold()
                                 }
-                                else if firstTypeEntry.type.name.capitalized == "Water" {
-                                    myColorPokemon = .blue
+                                if(typeEntry.type.name.capitalized == "Flying"){
+                                    Text(typeEntry.type.name.capitalized)
+                                        .padding(5)
+                                        .background(Color.cyan)
+                                        .cornerRadius(5)
+                                        .foregroundColor(Color.white)
+                                        .bold()
                                 }
-                                else if firstTypeEntry.type.name.capitalized == "Bug" {
-                                    myColorPokemon = myColorTipoBicho
+                                if(typeEntry.type.name.capitalized == "Normal"){
+                                    Text(typeEntry.type.name.capitalized)
+                                        .padding(5)
+                                        .background(Color.gray)
+                                        .cornerRadius(5)
+                                        .foregroundColor(Color.white)
+                                        .bold()
                                 }
-                                else if firstTypeEntry.type.name.capitalized == "Normal" {
-                                    myColorPokemon = .gray
+                                if(typeEntry.type.name.capitalized == "Bug"){
+                                    Text(typeEntry.type.name.capitalized)
+                                        .padding(5)
+                                        .background(myColorTipoBicho)
+                                        .cornerRadius(5)
+                                        .foregroundColor(Color.white)
+                                        .bold()
                                 }
-                            }
-                        }
-                        Spacer()
-                    }.frame(maxWidth: .infinity) // El VStack ocupa todo el ancho de la pantalla
-                        .padding()
-                    VStack{
-                        
-                        if let urlString = pokemon.sprites.front_default,
-                           let url = URL(string: urlString) {
-                            AsyncImage(url: url) { image in
-                                image.resizable().scaledToFit()
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            .frame(width: 350, height: 350)
-                            .padding()
-                        }
-                        Text(pokemon.name.capitalized)
-                            .font(.largeTitle).foregroundColor(myColorPokemon)
-                            .bold().offset(x: -80, y:-20)
-                        /*
-                        if let evoluciones = pokemon.evoluciones {
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text("Cadena Evolutiva")
-                                    .font(.title2)
-                                    .bold()
-                                    .foregroundColor(myColorVerdeClaro)
-                                    .padding(.leading)
-
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    HStack(spacing: 16) {
-                                        ForEach(evoluciones, id: \.self) { nombre in
-                                            VistaEvolucion(nombre: nombre)
-                                        }
+                            }.onAppear {
+                                // Se ejecuta una vez cuando la vista aparece.
+                                if let firstTypeEntry = pokemon.types.first {
+                                    if firstTypeEntry.type.name.capitalized == "Grass" {
+                                        myColorPokemon = .green
                                     }
-                                    .padding(.horizontal)
+                                    else if firstTypeEntry.type.name.capitalized == "Fire" {
+                                        myColorPokemon = .red
+                                    }
+                                    else if firstTypeEntry.type.name.capitalized == "Water" {
+                                        myColorPokemon = .blue
+                                    }
+                                    else if firstTypeEntry.type.name.capitalized == "Bug" {
+                                        myColorPokemon = myColorTipoBicho
+                                    }
+                                    else if firstTypeEntry.type.name.capitalized == "Normal" {
+                                        myColorPokemon = .gray
+                                    }
                                 }
                             }
-                        }*/
-
-
+                            Spacer()
+                        }.frame(maxWidth: .infinity) // El VStack ocupa todo el ancho de la pantalla
+                            .padding().offset(y:240)
                         VStack{
-                            Text("Datos")
-                                .foregroundColor(myColorVerdeClaro)
-                                .font(.title).bold().padding(10)
-                            Text("Abilities:").frame(maxWidth: .infinity, alignment: .leading)
-                                .font(.title3)
-                                .bold()
-                                .padding(.init(top: 0, leading: 20, bottom: 10, trailing: 0)).foregroundColor(myColorVerdeClaro)
-                            HStack{
-                                ForEach(pokemon.abilities, id: \.ability.name) { habilidad in
-                                    HStack{
-                                        Text(habilidad.ability.name.capitalized).foregroundColor(myColorVerdeClaro)
-                                    }.frame(maxWidth: .infinity, alignment: .leading).padding(.init(top: 0, leading: 20, bottom: 10, trailing: 0))
+                            
+                            if let urlString = pokemon.sprites.front_default,
+                               let url = URL(string: urlString) {
+                                AsyncImage(url: url) { image in
+                                    image.resizable().scaledToFit()
+                                } placeholder: {
+                                    ProgressView()
                                 }
+                                .frame(width: 350, height: 350)
+                                .padding().offset(y:-30)
                             }
-                            Text("Descripción:").frame(maxWidth: .infinity, alignment: .leading)
-                                .font(.title3)
-                                .bold()
-                                .padding(.init(top: 0, leading: 20, bottom: 0, trailing: 0)).foregroundColor(myColorVerdeClaro)
-                            if let descripcion = pokemon.description {
-                                Text(descripcion)
-                                    .font(.body)
+                            Text(pokemon.name.capitalized)
+                                .font(.largeTitle).foregroundColor(myColorPokemon)
+                                .bold().offset(x: -80, y:-10)
+                            /*
+                            if let evoluciones = pokemon.evoluciones {
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text("Cadena Evolutiva")
+                                        .font(.title2)
+                                        .bold()
+                                        .foregroundColor(myColorVerdeClaro)
+                                        .padding(.leading)
+
+                                    ScrollView(.horizontal, showsIndicators: false) {
+                                        HStack(spacing: 16) {
+                                            ForEach(evoluciones, id: \.self) { nombre in
+                                                VistaEvolucion(nombre: nombre)
+                                            }
+                                        }
+                                        .padding(.horizontal)
+                                    }
+                                }
+                            }*/
+
+
+                            VStack{
+                                Text("Data")
                                     .foregroundColor(myColorVerdeClaro)
-                                    .padding(.init(top: 0, leading: 20, bottom: 20, trailing: 10))
-                            }
-                        }.frame(width: 350).background(Color.white)
-                            .cornerRadius(10).offset(y: 0)
-                        
-                        
-                        
-                        //Text(pokemon.)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    }.offset(y: -400)
-                }
-                .frame(maxWidth: .infinity) // El VStack ocupa todo el ancho de la pantalla
-                .padding()
-            } else {
-                ProgressView("Cargando información del Pokémon...")
-                    .task {
-                        await cargarInfo()
+                                    .font(.title).bold().padding(10)
+                                Text("Abilities:").frame(maxWidth: .infinity, alignment: .leading)
+                                    .font(.title3)
+                                    .bold()
+                                    .padding(.init(top: 0, leading: 20, bottom: 10, trailing: 0)).foregroundColor(myColorVerdeClaro)
+                                HStack{
+                                    ForEach(pokemon.abilities, id: \.ability.name) { habilidad in
+                                        HStack{
+                                            Text(habilidad.ability.name.capitalized).foregroundColor(myColorVerdeClaro)
+                                        }.frame(maxWidth: .infinity, alignment: .leading).padding(.init(top: 0, leading: 20, bottom: 10, trailing: 0))
+                                    }
+                                }
+                                Text("Description [es]:").frame(maxWidth: .infinity, alignment: .leading)
+                                    .font(.title3)
+                                    .bold()
+                                    .padding(.init(top: 0, leading: 20, bottom: 0, trailing: 0)).foregroundColor(myColorVerdeClaro)
+                                if let descripcion = pokemon.description {
+                                    Text(descripcion)
+                                        .font(.body)
+                                        .foregroundColor(myColorVerdeClaro)
+                                        .padding(.init(top: 0, leading: 20, bottom: 20, trailing: 10))
+                                }
+                            }.frame(width: 350).background(Color.white)
+                                .cornerRadius(10).offset(y: 0)
+                            
+                            
+                            
+                            //Text(pokemon.)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                        }.offset(y: -150)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .frame(maxWidth: .infinity) // El VStack ocupa todo el ancho de la pantalla
+                    .padding()
+                } else {
+                    ProgressView("Cargando información del Pokémon...")
+                        .task {
+                            await cargarInfo()
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
             }
-        }.background(myColordeFondo)
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+        
         //.navigationTitle("Detalles")
     }
 

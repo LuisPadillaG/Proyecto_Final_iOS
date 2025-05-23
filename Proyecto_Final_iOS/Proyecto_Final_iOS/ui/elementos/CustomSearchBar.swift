@@ -13,7 +13,7 @@ struct CustomSearchBar: View {
     var body: some View {
         let myColorVerdeOscuro = Color(red: 0, green: 0.4, blue: 0.4, opacity: 0.8)
         HStack {
-            TextField("Buscar Pokémon", text: $text)
+            TextField("Search", text: $text)
                 .padding(.leading, 15)
                 .padding(.vertical, 12) .foregroundColor(.white)
             

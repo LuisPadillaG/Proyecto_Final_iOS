@@ -13,6 +13,13 @@ struct PokeAPI: Codable {
         let ubicacion_recursos = "item/"
         return await descargar(recurso: ubicacion_recursos)
     }
+
+    func descargar_objeto_individual(nombre: String) async -> ObjetosCompletos? {
+        await descargar(recurso: "item/\(nombre.lowercased())/")
+    }
+
+    
+    
     //descargar_pagina_personajes
     //"inspirado en servicios_API/dragonball_api"
     func descargar_pagina_pokemon() async -> PaginaResultado?{
