@@ -139,26 +139,7 @@ struct pantalla_detalle_pokemon: View {
                             }
                             Text(pokemon.name.capitalized)
                                 .font(.largeTitle).foregroundColor(myColorPokemon)
-                                .bold().offset(x: -80, y:-10)
-                            /*
-                            if let evoluciones = pokemon.evoluciones {
-                                VStack(alignment: .leading, spacing: 10) {
-                                    Text("Cadena Evolutiva")
-                                        .font(.title2)
-                                        .bold()
-                                        .foregroundColor(myColorVerdeClaro)
-                                        .padding(.leading)
-
-                                    ScrollView(.horizontal, showsIndicators: false) {
-                                        HStack(spacing: 16) {
-                                            ForEach(evoluciones, id: \.self) { nombre in
-                                                VistaEvolucion(nombre: nombre)
-                                            }
-                                        }
-                                        .padding(.horizontal)
-                                    }
-                                }
-                            }*/
+                                .bold().offset(x: -80, y:-10) 
 
 
                             VStack{

@@ -70,13 +70,8 @@ struct pantalla_pokemon: View {
                                         Text("P O K E D E X").foregroundColor(Color.white).font(.title2)
                                             .bold()
                                     }.offset(y: 15)
-                                    
+                                    //aca meto el customsearchba
                                     CustomSearchBar(text: $searchText).offset(y: 20)
-                                    /*ZStack{
-                                        Rectangle()
-                                            .background(myColorVerdeOscuro).foregroundColor(Color.gray.opacity(0))
-                                    }.frame(width: 350, height: 225)
-                                        .border(myColorGris, width: 7).offset(y: 30)*/
                                     
                                     ZStack {
                                         Rectangle()
@@ -170,7 +165,7 @@ extension View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
 }
-
+//Cosa para hacer redondeados mis esquinas superiores
 struct RoundedCorner: Shape {
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners

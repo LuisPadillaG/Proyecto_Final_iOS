@@ -27,6 +27,8 @@ struct Enlaces: Codable{
      let meta: Meta
      let links: Enlaces
  }*/
+
+//resultados generales de la api apenas entras a pokemon
 struct PaginaResultado: Codable{
     let count: Int
     let next: String?

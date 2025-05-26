@@ -5,7 +5,7 @@
 //  Created by alumno on 5/12/25.
 //
 
-
+//Para descargar la description del pokemon más que nada, 
 struct PokemonSpecies: Codable {
     let flavor_text_entries: [FlavorTextEntry]
     let evolution_chain: EvolutionChainResource

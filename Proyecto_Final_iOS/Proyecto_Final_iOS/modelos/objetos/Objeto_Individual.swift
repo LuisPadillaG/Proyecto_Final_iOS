@@ -6,6 +6,8 @@
 //
 import Foundation
 
+
+//Esta es toda la información individual para el descargado de cada objeto, no le muevas porfa. (Al menos aquí no tengo que entrar a otras subcategorías de la API
 struct ObjetosCompletos: Codable {
     let name: String
     let effectEntries: [EffectEntry]

@@ -30,7 +30,7 @@ struct pantalla_objeto_detallado: View {
                 .offset(x: -100, y: -400)
             ScrollView {
                 if let objeto = objeto {
-                    VStack(spacing: 16) {
+                    VStack() {
                         if let url = objeto.sprites.defaultImage, let imageURL = URL(string: url) {
                             AsyncImage(url: imageURL) { image in
                                 image
@@ -75,35 +75,6 @@ struct pantalla_objeto_detallado: View {
                                 }
                     }
                     .padding()
-                    /*
-                     VStack{
-                         Text("Datos")
-                             .foregroundColor(myColorVerdeClaro)
-                             .font(.title).bold().padding(10)
-                         Text("Abilities:").frame(maxWidth: .infinity, alignment: .leading)
-                             .font(.title3)
-                             .bold()
-                             .padding(.init(top: 0, leading: 20, bottom: 10, trailing: 0)).foregroundColor(myColorVerdeClaro)
-                         HStack{
-                             ForEach(pokemon.abilities, id: \.ability.name) { habilidad in
-                                 HStack{
-                                     Text(habilidad.ability.name.capitalized).foregroundColor(myColorVerdeClaro)
-                                 }.frame(maxWidth: .infinity, alignment: .leading).padding(.init(top: 0, leading: 20, bottom: 10, trailing: 0))
-                             }
-                         }
-                         Text("Descripción:").frame(maxWidth: .infinity, alignment: .leading)
-                             .font(.title3)
-                             .bold()
-                             .padding(.init(top: 0, leading: 20, bottom: 0, trailing: 0)).foregroundColor(myColorVerdeClaro)
-                         if let descripcion = pokemon.description {
-                             Text(descripcion)
-                                 .font(.body)
-                                 .foregroundColor(myColorVerdeClaro)
-                                 .padding(.init(top: 0, leading: 20, bottom: 20, trailing: 10))
-                         }
-                     }.frame(width: 350).background(Color.white)
-                         .cornerRadius(10).offset(y: 0)
-                     */
                 } else {
                     ProgressView("Cargando objeto...")
                 }

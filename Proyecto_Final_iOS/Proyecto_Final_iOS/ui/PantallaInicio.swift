@@ -9,10 +9,32 @@ import SwiftUI
 
 struct PantallaInicio: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            ZStack{
+                Image("Fondo_pokedex")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                Rectangle()
+                    .edgesIgnoringSafeArea(.all)
+                    .opacity(0.7)
+                VStack{
+                    Image("Logo_pokedex")
+                    Text("Guía básica para entrenadores primerisos")
+                        .font(.subheadline)
+                        .bold()
+                        .foregroundColor(.white)
+                        .padding()
+                    NavigationLink(destination: BarraNavegacion(), label: {
+                        Text("¡Vamos alla!")
+                    })
+                }
+            }
+        }
     }
 }
 
 #Preview {
     PantallaInicio()
+        .environmentObject(ControladorAplicacion())
 }

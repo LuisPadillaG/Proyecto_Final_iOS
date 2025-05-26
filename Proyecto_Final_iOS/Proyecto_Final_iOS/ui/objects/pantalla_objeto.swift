@@ -22,11 +22,11 @@ struct pantalla_objeto: View {
                         Text(objeto.name.capitalized)
                             .font(.title3) .bold()
                             .foregroundStyle(myColorVerdeClaro) //Color del texto de la fila
-                            .padding(.vertical, 5) //Espaciado vertical dentro de la fila
+                            .padding(.vertical, 5) //Espaciado verticals
                     }
-                    .listRowBackground(myColorBlancoPseudoTransparente) // Fondo de cada fila
-                    .listRowSeparatorTint(.green) // Color del separador
-                    .listRowSeparator(.visible, edges: .all) // Asegura que el separador sea visible
+                    .listRowBackground(myColorBlancoPseudoTransparente) // Fondo pa cada fila
+                    .listRowSeparatorTint(.green)
+                    .listRowSeparator(.visible, edges: .all) // Hará mi separadors visible
                     .padding(20)
                 }
                 .listStyle(.plain)

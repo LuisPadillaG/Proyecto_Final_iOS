@@ -4,7 +4,7 @@
 //
 //  Created by alumno on 5/12/25.
 //
-
+//Struct todavía no usada, pensada para añadir al descargado de información a un pokémon detallado
 struct evolutionChain:Identifiable, Codable
 {
     let id: Int
